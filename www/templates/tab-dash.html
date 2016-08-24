@@ -1,0 +1,30 @@
+<ion-view view-title="Inventory Status">
+  <ion-content class="padding">
+  <div class="container" ng-app="starter" ng-controller="GitHubController as gh">
+    <form class="form-inline" ng-submit="gh.search(query)">
+      <div class="form-group">
+        <input type="search" class="form-control" ng-model="query" placeholder="Search">
+        <button class="btn btn-default">Search</button>
+      </div>
+    </form>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in gh.result.items">
+          <th scope="row"><!--a target="_blank" href="{{ item.html_url }}"-->{{ item.name }}<!--/a--></th>
+          <td>{{ item.description }}</td>
+          <td>
+            <!--a target="_blank" href="{{ item.owner.html_url }}"--><img height="20" src="{{ item.owner.avatar_url }}"> {{ item.owner.login }}<!--/a-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,64 @@
+<html ng-app="ionicApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Search directive example</title>
+  </head>
+
+  <body>
+
+    <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+      <ion-nav-back-button class="button-icon ion-arrow-left-c">
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+
+
+    <script id="tabs.html" type="text/ng-template">
+      <ion-tabs class="tabs-icon-top tabs-positive">
+
+        <ion-tab title="Promise" icon="ion-ios7-world" ui-sref="tabs.promise">
+          <ion-nav-view name="promise-tab"></ion-nav-view>
+        </ion-tab>
+
+          <ion-tab title="Preloaded" icon="ion-ios7-world" ui-sref="tabs.preloaded">
+          <ion-nav-view name="preloaded-tab"></ion-nav-view>
+        </ion-tab>
+
+      </ion-tabs>
+    </script>
+
+    <script id="promise.html" type="text/ng-template">
+      <ion-view hide-nav-bar="true">
+        <ion-content>
+          <div class="bar bar-header bar-positive item-input-inset">
+            <ion-search class="search-wrapper-light" placeholder="Search a user" min-length="1" model="users" source="getUsersByName(str)"></ion-search>
+        </div>
+        <div class="list">
+          <div ng-repeat="user in users" class="item">
+                {{user.name}}
+            </div>
+            </div>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script id="preloaded.html" type="text/ng-template">
+      <ion-view title="Preloaded">
+        <ion-content>
+           <div class="list">
+            <div class="bar bar-header item-input-inset">
+                <ion-search placeholder="Search a user" filter="search"></ion-search>
+            </div>
+            <div ng-repeat="user in users | filter:search.value" class="item">
+                {{user.name}}
+             </div>
+        </div>
+        </ion-content>
+      </ion-view>
+    </script>
+
+  </body>
+</html>
